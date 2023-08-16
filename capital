@@ -1,0 +1,19 @@
+#include <iostream>
+#include<math.h>
+
+using namespace std;
+
+int main()
+{
+    float Capital,Tasaintereses,Tiempo,Resultado;
+    cout<<"Ingresar el Capital: ";
+    cin>>Capital;
+    cout<<"Ingresar la Tasaintereses: ";
+    cin>>Tasaintereses;
+    cout<<"Ingresar el Tiempo: ";
+    cin>>Tiempo;
+    Resultado =pow(1+Tasaintereses,Tiempo)*Capital;
+    cout<<"el Resultado de Capital final es: "<<Resultado;
+    
+    return 0;
+}
