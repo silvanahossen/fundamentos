@@ -1,0 +1,28 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{ double c1, c2;
+
+    cout<<"ingrese el primer numero"<<endl;
+    cin>>c1;
+    cout<<"ingrese el segundo numero"<<endl;
+    cin>>c2;
+    
+    c1=(c1+c2);
+    
+    cout<<"ingrese el tercer numero"<<endl;
+    cin>>c2;
+    c1=(c1+c2);
+    
+    cout<<"ingrese el cuarto numero"<<endl;
+    cin>>c2;
+    
+    cout<<"ingrese el quinto numero"<<endl;
+    cin>>c2;
+    
+    c1=(c1+c2)/5;
+    cout<<c1<<endl;
+    return 0;
+}
