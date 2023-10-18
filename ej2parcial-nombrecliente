@@ -1,0 +1,26 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    
+    float p,d,t, suma=0;
+    string nombrecliente; 
+    cout<<"introduzca el precio: (-999 para terminar) ";
+    cin>>p;
+    while(p !=-999){
+        cout<<"introducir el nombre del cliente: ";
+        cin>>nombrecliente;
+    cout<<"introduzca el descuento  a aplicar: ";
+    cin>>d;
+    t=p-(p*(d/100));
+    suma+=t; //suma=suma+t;
+    cout<<"el precio total a pagar con descuento es: "<<t<<endl;
+    cout<<"introduzca el precio: ";
+    cin>>p;
+}
+   
+    cout<<"el monto total es: "<<suma;
+    return 0;
+}
