@@ -1,0 +1,23 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    char resp;
+    float p,d,t, suma=0;
+    do{ //fro(int i=1; i<=num; i++){
+    cout<<"introduzca el precio: ";
+    cin>>p;
+    cout<<"introduzca el descuento  a aplicar: ";
+    cin>>d;
+    t=p-(p*(d/100));
+    suma+=t; //suma=suma+t;
+    cout<<"el precio total a pagar con descuento es: "<<t<<endl;
+    cout<<"desea continuar (s o S): ";
+    cin>>resp;
+
+    }while((resp=='s')(resp=='S'));
+    cout<<"el monto total es: "<<suma;
+    return 0;
+}
