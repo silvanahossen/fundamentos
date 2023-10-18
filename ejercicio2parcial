@@ -1,0 +1,18 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    float p,d,t, suma=0;
+    do{
+        cout<<"introduzca el precio: ";
+    cin>>p;
+    cout<<"introduzca el descuento  a aplicar: ";
+    cin>>d;
+    t=p-(p*(d/100));
+    cout<<"el precio total a pagar con descuento es: "<<t<<endl;
+
+    return 0;
+    }while(p!=0);
+}
