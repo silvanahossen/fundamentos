@@ -10,7 +10,7 @@ double promedio (double a[], int tamano);
 int main()
 {
     int n;
-    double vex[MAX];
+    double vec[MAX];
     do{
         cout<<"ingresar el numero de elementos: ";
         cin>>n;
@@ -33,7 +33,7 @@ void cargar (double a[], int tamano)
 }
 void mostrar (double a[], int tamano)
 {
-    for(int i=o; i<tamano; i++)
+    for(int i=0; i<tamano; i++)
     cout<<a[i];
 }
 
