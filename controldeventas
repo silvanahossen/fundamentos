@@ -1,0 +1,52 @@
+//silvana hossen rosas
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+void ingresar_producto(string nombres_productos[]){
+    int i=0;
+    while(nombres_productos[i] != ""){
+        cout<<"ingrese el nombre del producto: ";
+        cin>>nombres_productos[i];
+        
+        i++;
+    }
+}
+void ingresar_venta(float ventas[]){
+    int i=0;
+    while(ventas[i]!=0){
+        cout<<"ingrese la venta realizada: ";
+        cin>>ventas[i];
+        
+        i++;
+    }
+}
+float calcular_ventas_totales(float ventas[]){
+    float ventas_totales=0;
+    for(int i=0; ventas[i] !=0;i++){
+        ventas_totales +=ventas[i]; 
+    }
+    return ventas_totales;
+}
+int main() {
+   string nombres_productos[100];
+  float ventas[100];
+
+  for (int i = 0; i < 100; i++) {
+    nombres_productos[i] = "";
+    ventas[i] = 0;
+  }
+
+
+  ingresar_producto(nombres_productos);
+  ingresar_venta(ventas);
+
+
+  float ventas_totales = calcular_ventas_totales(ventas);
+
+ 
+  cout << "Las ventas totales son: " << ventas_totales << endl;
+
+  return 0;
+}
