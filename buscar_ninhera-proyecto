@@ -1,0 +1,47 @@
+#include <iostream>
+#include <limits> // Para utilizar numeric_limits
+
+using namespace std;
+
+int main() {
+    // Declaración de variables
+    string horarioTrabajo;
+    string bebes;
+    string niños;
+    double salarioOfrecido;
+    string direccionDomicilio;
+
+    // Solicitar información al usuario
+    cout << "Ingrese el horario de trabajo: ";
+    getline(cin, horarioTrabajo);
+    
+    cout << "Cantidad de bebes en el hogar (menor a 3 años): ";
+    cin >> bebes;
+    
+    cout << "Cantidad de niños en el hogar (mayor a 3 años): ";
+    cin >> niños;
+
+    cout << "Ingrese el salario ofrecido: ";
+    while (!(cin >> salarioOfrecido)) {
+        // Manejar entrada no válida
+        cout << "Error. Ingrese un valor numérico para el salario: ";
+        cin.clear(); // Limpiar el estado de error
+        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Descartar la entrada incorrecta
+    }
+
+    // Limpiar el buffer después de la lectura del número para evitar problemas con la siguiente lectura de línea
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+    cout << "Ingrese la dirección del domicilio: ";
+    getline(cin, direccionDomicilio);
+
+    // Mostrar la información ingresada
+    cout << "\nInformación ingresada:\n";
+    cout << "Horario de trabajo: " << horarioTrabajo << endl;
+    cout << "Cantidad de bebes en el hogar: " << bebes << endl;
+    cout << "Cantidad de niños: " << niños << endl;
+    cout << "Salario ofrecido: $" << salarioOfrecido << endl;
+    cout << "Dirección del domicilio: " << direccionDomicilio << endl;
+
+    return 0;
+}
