@@ -1,0 +1,59 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+    cout << "Bienvenido al Soporte Técnico de la Aplicación\n";
+
+    while (true) {
+        cout << "\nElige una pregunta (o escribe 'salir' para salir):\n";
+        cout << "1. No puedo acceder a mi cuenta. ¿Cómo puedo restablecer mi contraseña?\n";
+        cout << "2. La aplicación se cerró inesperadamente. ¿Qué debo hacer?\n";
+        cout << "3. ¿Cómo puedo realizar una copia de seguridad de mis datos en la aplicación?\n";
+        cout << "4. Quiero cambiar mi dirección de correo electrónico asociada con la cuenta. ¿Cómo puedo hacerlo?\n";
+        cout << "5. Al intentar realizar una compra dentro de la aplicación, aparece un error de pago. ¿Qué debo hacer?\n";
+        cout << "6. ¿Cuáles son los requisitos del sistema para utilizar la aplicación?\n";
+        cout << "7. Salir\n";
+
+        int opcion;
+        cout << "Opción: ";
+        cin >> opcion;
+        cin.ignore();  // Limpiar el buffer de entrada
+
+        if (opcion == 7) {
+            cout << "Gracias por usar nuestro servicio de soporte técnico. ¡Hasta luego!\n";
+            break;
+        }
+
+        string respuesta;
+
+        switch (opcion) {
+            case 1:
+                respuesta = "Para restablecer tu contraseña, ve a la pantalla de inicio de sesión y haz clic en 'Olvidé mi contraseña'. Se te enviará un enlace de restablecimiento a tu correo electrónico registrado. Sigue las instrucciones en el correo para crear una nueva contraseña.";
+                break;
+            case 2:
+                respuesta = "Lamentamos la inconveniencia. Cierra completamente la aplicación y vuélvela a abrir. Si el problema persiste, intenta desinstalar y reinstalar la aplicación. Si aún tienes problemas, proporciónanos detalles adicionales sobre tu dispositivo y sistema operativo.";
+                break;
+            case 3:
+                respuesta = "Actualmente, nuestra aplicación realiza copias de seguridad automáticas de tus datos en la nube. Si deseas hacer una copia de seguridad manual, ve a la configuración de la aplicación y busca la opción 'Copia de seguridad'. Desde allí, podrás realizar una copia de seguridad en cualquier momento.";
+                break;
+            case 4:
+                respuesta = "Para cambiar tu dirección de correo electrónico, inicia sesión en tu cuenta y ve a la configuración del perfil. Allí encontrarás la opción de cambiar tu dirección de correo electrónico. Después de realizar el cambio, recibirás un correo electrónico de verificación en la nueva dirección.";
+                break;
+            case 5:
+                respuesta = "Lo siento por los problemas con la compra. Asegúrate de que la información de tu tarjeta sea correcta y que tengas fondos suficientes. Si el problema persiste, intenta reiniciar la aplicación o usar otro método de pago. Si el problema persiste, comunícate con nuestro equipo de soporte proporcionando los detalles del error.";
+                break;
+            case 6:
+                respuesta = "Los requisitos del sistema varían según la plataforma. Para obtener información detallada, visita nuestra página web o consulta la descripción de la aplicación en la tienda correspondiente. Generalmente, recomendamos tener la última versión del sistema operativo y suficiente espacio de almacenamiento.";
+                break;
+            default:
+                respuesta = "Opción no válida. Por favor, elige una opción válida.";
+                break;
+        }
+
+        cout << "\nRespuesta: " << respuesta << "\n";
+    }
+
+    return 0;
+}
