@@ -1,0 +1,82 @@
+#include <iostream>
+#include <string>
+#define MAX 1000
+
+using namespace std;
+
+struct usuario {
+    string nombre1;
+    string apaterno1;
+    string amaterno1;
+    string fechanacimiento;
+    string genero1;
+    string signoastral;
+};
+
+usuario V[MAX];
+
+void registrarse();
+void perfil();
+int contuser=0;
+
+int main()
+{
+    int opcion, opcion1;
+    do {
+        cout << "-------MATERNITY-------" << endl;
+        cout << "[1] Registrarse" << endl;
+        cout << "[2] Ver perfil" << endl;
+        cout << "[0] SALIR" << endl;
+        cout << "-----------------------" << endl;
+        cout << endl;
+        cout << "Elegir una opcion: ";
+        cin >> opcion;
+        switch (opcion) {
+        case 1: registrarse();
+            cout << "¡El perfil de tu bebe fue creado!" << endl;
+            break;
+        case 2: perfil();
+            break;
+        case 0: cout << "SALISTE" << endl;
+            return 0;
+            break;
+        default: cout << "opcion invalida" << endl;
+        }
+    } while (opcion != 0);
+
+    return 0;
+}
+void registrarse() {
+    string nombre, apaterno, amaterno, fechanacimiento, genero, signoastral;
+    cout << "-------MATERNITY-------" << endl;
+    cout << "Escribe el nombre del bebe: ";
+    cin >> nombre;
+    cout << "Ingresa su apellido paterno: ";
+    cin >> apaterno;
+    cout << "Ingresa su apellido materno: ";
+    cin >> amaterno,
+    cout << "Ingresa la fecha de nacimiento de tu bebe: ";
+    cin.ignore();
+    getline(cin, fechanacimiento);
+    cout << "Ingresa su genero: ";
+    cin >> genero;
+    cout << "Ingresa el signo astral de tu bebe: ";
+    cin >> signoastral;
+
+    V[contuser].nombre1 = nombre;
+    V[contuser].apaterno1 = apaterno;
+    V[contuser].amaterno1 = amaterno;
+    V[contuser].fechanacimiento = fechanacimiento;
+    V[contuser].genero1 = genero;
+    V[contuser].signoastral = signoastral;
+    contuser++;
+}
+void perfil() {
+    cout << "DATOS REGISTRADOS" << endl;
+    cout << "Nombre: " << V[0].nombre1 << endl;
+    cout << "Apellido paterno: " << V[0].apaterno1 << endl;
+    cout << "Apellido materno: " << V[0].amaterno1 << endl;
+    cout << "Fecha de nacimiento: " << V[0].fechanacimiento << endl;
+    cout << "Genero: " << V[0].genero1 << endl;
+    cout << "Signo astral: " << V[0].signoastral << endl;
+}
