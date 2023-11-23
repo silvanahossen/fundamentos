@@ -1,0 +1,156 @@
+#include<iostream>
+using namespace std;
+
+void generarSuc1(int& matriz, int fil, int col);
+void generarSuc2(int& matriz, int fil, int col);
+void generarSuc3(int& matriz, int fil, int col);
+void generarSuc4(int& matriz, int fil, int col);
+void mostrarMatrices(int& matrices, int fil, int col, int num_matrices);
+
+int main() {
+    int opcion;
+    const int MAX_MATRICES = 100;
+    int matrices = new int [MAX_MATRICES];
+    int fil = new int[MAX_MATRICES];
+    int col = new int[MAX_MATRICES];
+    int num_matrices = 0;
+
+    do {
+        cout << "Seleccione una opcion porfavor" << endl;
+        cout << "1. Generar sucesion 1" << endl;
+        cout << "2. Generar sucesion 2" << endl;
+        cout << "3. Generar sucesion 3" << endl;
+        cout << "4. Generar sucesion 4" << endl;
+        cout << "5. Mostrar todas las matrices" << endl;
+        cout << "0. Salir" << endl;
+        cin >> opcion;
+
+        if (opcion < 0 || opcion > 5) {
+            cout << "Ingrese un numero entre 0 y 5" << endl;
+        }
+
+        switch (opcion) {
+        case 1: {
+            cout << "Ingrese el numero de filas: ";
+            cin >> fil[num_matrices];
+            cout << "Ingrese el numero de columnas: ";
+            cin >> col[num_matrices];
+            generarSuc1(matrices[num_matrices], filas[num_matrices], col[num_matrices]);
+            num_matrices++;
+            break;
+        }
+        case 2: {
+            cout << "Ingrese el numero de filas: ";
+            cin >> fil[num_matrices];
+            cout << "Ingrese el numero de columnas: ";
+            cin >> col[num_matrices];
+            generarSuc2(matrices[num_matrices], fil[num_matrices], col[num_matrices]);
+            num_matrices++;
+            break;
+        }
+        case 3: {
+            cout << "Ingrese el numero de filas: ";
+            cin >> fil[num_matrices];
+            cout << "Ingrese el numero de columnas: ";
+            cin >> col[num_matrices];
+            generarSuc3(matrices[num_matrices], fil[num_matrices], col[num_matrices]);
+            num_matrices++;
+            break;
+        }
+        case 4: {
+            cout << "Ingrese el numero de filas: ";
+            cin >> fil[num_matrices];
+            cout << "Ingrese el numero de columnas: ";
+            cin >> col[num_matrices];
+            generarSuc4(matrices[num_matrices], fil[num_matrices], col[num_matrices]);
+            num_matrices++;
+            break;
+        }
+        case 5: {
+            mostrarMatrices(matrices, fil, col, num_matrices);
+            break;
+        }
+        }
+    } while (opcion != 0);
+
+    return 0;
+}
+
+void generarSuc1(int& matriz, int fil, int col) {
+    matriz = new int [fil];
+    for (int i = 0; i < fil; i++) {
+        matriz[i] = new int[col];
+    }
+
+    int valor = 3;
+    for (int i = 0; i < fil; i++) {
+        for (int j = 0; j < col; j++) {
+            matriz[i][j] = valor;
+            valor += 3;
+        }
+    }
+}
+
+void generarSuc2(int& matriz, int fil, int col) {
+    matriz = new int [fil];
+    for (int i = 0; i < fil; i++) {
+        matriz[i] = new int[col];
+    }
+
+    int valor = 1;
+    for (int i = 0; i < fil; i++) {
+        for (int j = 0; j < col; j++) {
+            matriz[i][j] = valor * valor;
+            valor++;
+        }
+    }
+}
+
+void generarSuc3(int& matriz, int fil, int col) {
+    matriz = new int [fil];
+    for (int i = 0; i < fil; i++) {
+        matriz[i] = new int[col];
+    }
+
+    int valor = 1;
+    for (int i = 0; i < fil; i++) {
+        for (int j = 0; j < col; j++) {
+            matriz[i][j] = valor;
+            valor = valor * 2;
+        }
+    }
+}
+
+void generarSuc4(int& matriz, int fil, int col) {
+    matriz = new int [fil];
+    for (int i = 0; i < fil; i++) {
+        matriz[i] = new int[col];
+    }
+
+    int valor = 1;
+    for (int i = 0; i < fil; i++) {
+        for (int j = 0; j < col; j++) {
+            matriz[i][j] = valor;
+            valor = (valor == 1 || valor == 2) ? valor * 2 : valor - 1;
+        }
+    }
+}
+
+void mostrarMatrices(int& matrices, int fil, int col, int num_matrices) {
+    if (num_matrices == 0) {
+        cout << "No hay ninguna matriz para mostrar.\n";
+        return;
+    }
+
+    for (int m = 0; m < num_matrices; m++) {
+        cout << "Matriz " << m + 1 << ":\n";
+        for (int i = 0; i < fil[m]; i++) {
+            for (int j = 0; j < col[m]; j++) {
+                cout << matrices[m][i][j] << " ";
+            }
+            cout << "\n";
+        }
+        cout << "\n";
+    }
+}
+
