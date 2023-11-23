@@ -1,0 +1,131 @@
+#include <iostream>
+#include <string>
+#include <cstdlib> // Para rand()
+
+using namespace std;
+
+struct Producto {
+    string nombre;
+    float precio;
+    int cantidad;
+};
+
+struct Pedido {
+    string nombreProducto;
+    int cantidad;
+    string tiempoEntrega;
+    int codigoPedido;
+};
+
+Producto productos[] = {
+    {"Leche en polvo", 25.0, 1},
+    {"Pañales", 30.0, 1},
+    // ... (otros productos)
+    {"Chupon", 20.0, 1}
+};
+
+Pedido pedidosRealizados[100]; // Asumiendo un máximo de 100 pedidos
+int numPedidos = 0;
+
+void tienda();
+void mostrarMetodosDePago();
+void hacerPedido();
+void verPedidosPasados();
+int generarCodigoPedido();
+
+int main() {
+    tienda();
+    return 0;
+}
+
+void tienda(){
+    int opcion;
+    do {
+        cout << "1. Hacer pedido\n";
+        cout << "2. Ver pedidos pasados\n";
+        cout << "3. Salir\n";
+        cout << "Elige una opción: ";
+        cin >> opcion;
+
+        switch (opcion) {
+            case 1:
+                hacerPedido();
+                break;
+            case 2:
+                verPedidosPasados();
+                break;
+            case 0:
+                cout << "Gracias por visitar nuestra tienda.\n";
+                break;
+            default:
+                cout << "Opción inválida.\n";
+        }
+    } while (opcion != 3);
+}
+
+void hacerPedido() {
+    int totalProductos = sizeof(productos) / sizeof(productos[0]);
+    int opcion, cantidad, metodoPago;
+    string direccion;
+    char seguir;
+    float total = 0.0;
+
+    do {
+        for (int i = 0; i < totalProductos; i++) {
+            cout << "[" << i + 1 << "] " << productos[i].nombre << "\t\t - $" << productos[i].precio << endl;
+        }
+
+        cout << "Elegir producto (número): ";
+        cin >> opcion;
+
+        if (opcion > 0 && opcion <= totalProductos) {
+            cout << "Has elegido: " << productos[opcion - 1].nombre << endl;
+            cout << "Ingresar cantidad: ";
+            cin >> cantidad;
+
+            total += productos[opcion - 1].precio * cantidad;
+
+            Pedido nuevoPedido;
+            nuevoPedido.nombreProducto = productos[opcion - 1].nombre;
+            nuevoPedido.cantidad = cantidad;
+            nuevoPedido.tiempoEntrega = "24 a 30 horas";
+            nuevoPedido.codigoPedido = rand() % 90000 + 10000; // Genera un código aleatorio entre 10000 y 99999
+
+            pedidosRealizados[numPedidos++] = nuevoPedido;
+        } else {
+            cout << "Opción inválida." << endl;
+            continue;
+        }
+
+        cout << "¿Desea agregar otro producto? (S/N): ";
+        cin >> seguir;
+
+    } while (seguir == 'S' || seguir == 's');
+
+    cout << "Total a pagar: $" << total << endl;
+    mostrarMetodosDePago();
+    cout << "Selecciona tu método de pago: ";
+    cin >> metodoPago;
+
+    cout << "Ingresar dirección: ";
+    cin >> direccion;
+
+    cout << "Gracias por tu compra. Se ha procesado el pago.\n";
+    cout << "Su pedido será entregado en 30 horas " << endl;
+}
+
+void mostrarMetodosDePago() {
+    cout << "Métodos de Pago:\n";
+    cout << "1. Tarjeta de Crédito\n";
+    cout << "2. QR\n";
+    cout << "3. Efectivo\n";
+}
+
+void verPedidosPasados() {
+    for (int i = 0; i < numPedidos; i++) {
+        cout << "Pedido #" << pedidosRealizados[i].codigoPedido << " - ";
+        cout << pedidosRealizados[i].nombreProducto << " x ";
+        cout << pedidosRealizados[i].cantidad << " - ";
+        cout << pedidosRealizados[i].tiempoEntrega << endl;
+    }
+}
